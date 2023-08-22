@@ -14,11 +14,20 @@ class ProdutoListView(ListView):
         categorias = Categoria.objects.all()
         if self.kwargs and self.kwargs['categ_slug']:
             slug = self.kwargs['categ_slug']
-            categoria = Categoria.filter(slug=slug)
-            self.queryset = self.queryset.filter(categoria=categoria)
+            categoria = Categoria.objects.filter(slug=slug)
         contexto['categoria'] = categoria
         contexto['categorias'] = categorias
+        print(contexto)
         return contexto
+
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if self.kwargs and self.kwargs['categ_slug']:
+            slug = self.kwargs['categ_slug']
+            categoria = Categoria.objects.filter(slug=slug)
+            return qs.filter(categoria=categoria)
+        return qs
 
 
 class ProdutoDetailView(DetailView):
