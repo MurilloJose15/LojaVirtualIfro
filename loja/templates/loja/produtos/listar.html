@@ -8,12 +8,20 @@
     {% if categoria %}
         <h3>{{ categoria }}</h3>
     {% endif %}
+
+
     <h2>Categorias Disponíveis</h2>
+
+
     <ul>
     {% for c in categorias %}
+
         <li>{{ c.nome }}</li>
+
     {% endfor %}
     </ul>
+
+
     <h2>Produtos</h2>
     <ol>
     {% for p in produtos %}
