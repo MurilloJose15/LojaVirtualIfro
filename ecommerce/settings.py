@@ -1,3 +1,4 @@
+
 """
 Django settings for ecommerce project.
 
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'ecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['loja/templates', 'carrinho/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -5,7 +5,7 @@ from django.conf import settings
 from loja.models import Produto
 
 
-class Carinnho(object):
+class Carrinho(object):
 
     def __init__(self, request):
         """

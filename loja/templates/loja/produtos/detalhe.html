@@ -12,8 +12,15 @@
             <p class="mb-4">Preço: R$ {{ object.preco }}</p>
             <p class="mb-4">Categoria: {{ object.categoria }}</p>
             <p class="mb-4">Disponível: {% if object.disponivel %}Sim{% else %}Não{% endif %}</p>
-            <a href="#" class="btn btn-secondary">Adicionar ao carrinho</a>
             <a href="{% url 'listarprodcateg' categ_slug=object.categoria.slug %}" class="btn btn-secondary">Voltar para a categoria</a>
+        </div>
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">L
+            <div class="text-center">
+                <form action="{% url 'addcarrinho' produto.id %}" method="post">
+                    {{ formadd }}
+                    {{ csrf_token }}
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}
