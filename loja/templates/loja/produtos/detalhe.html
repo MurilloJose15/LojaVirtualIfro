@@ -12,7 +12,8 @@
             <p class="mb-4">Preço: R$ {{ object.preco }}</p>
             <p class="mb-4">Categoria: {{ object.categoria }}</p>
             <p class="mb-4">Disponível: {% if object.disponivel %}Sim{% else %}Não{% endif %}</p>
-            <a href="{% url 'listarprodcateg' categ_slug=object.categoria.slug %}" class="btn btn-secondary">Voltar</a>
+            <a href="#" class="btn btn-secondary">Adicionar ao carrinho</a>
+            <a href="{% url 'listarprodcateg' categ_slug=object.categoria.slug %}" class="btn btn-secondary">Voltar para a categoria</a>
         </div>
     </div>
 {% endblock %}
