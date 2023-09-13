@@ -20,16 +20,15 @@ class Carrinho(object):
     def addProduto(self, produto, quantidade=1, alterarquantidade=False):
         """
         Adiciona um produto ao carrinho de compras ou atualiza sua quantidade
-        :param produto: o produto a ser inserido ou atualiuzado a quantidade
+        :param produto: o produto a ser inserido ou atualizado a quantidade
         :param quantidade: a quantidade do produto a ser adicionado
-        :param alterarquantidade: quando necessario a alteração da quantidade do produto
+        :param alterarquantidade: quando necessário a alteração da quantidade do produto
         :return:
         """
-
         idprod = str(produto.id)
         if idprod not in self.carrinho:
-            self.carrinho[idprod] = {'quantidade' : 0,
-                                  'preco': str(produto.preco)}
+            self.carrinho[idprod] = {'quantidade': 0,
+                                     'preco': str(produto.preco)}
         if alterarquantidade:
             self.carrinho[idprod]['quantidade'] = quantidade
         else:
@@ -38,6 +37,7 @@ class Carrinho(object):
 
     def _salvar(self):
         self.session.modified = True
+
 
     def removerProduto(self, produto):
         """
@@ -50,10 +50,9 @@ class Carrinho(object):
             del self.carrinho[idprod]
             self._salvar()
 
-
     def __iter__(self):
         """
-        Itera sobre os itens do  carrinho e obtem os produtos do banco de dados
+        Itera sobre os itens do carrinho e obtem os produtos do banco de dados
         :return:
         """
         idsprodutos = self.carrinho.keys()
@@ -73,11 +72,9 @@ class Carrinho(object):
         """
         return sum(item['quantidade'] for item in self.carrinho.values())
 
-
     def get_preco_total(self):
         return sum(Decimal(item['preco']) * item['quantidade'] for item in self.carrinho.values())
 
     def limpar(self):
-        del self.session[settings.CARRINNHO_SESSION_ID]
+        del self.session[settings.CARRINHO_SESSION_ID]
         self._salvar()
-
